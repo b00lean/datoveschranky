@@ -1,0 +1,17 @@
+datove schranky - aplikace pro operacni system Android umoznujici pristup k datovym schrankam umistenym na adrese http://www.mojedatovaschranka.cz
+===============
+
+Autorstvi:
+	Autorem aplikace je spolecnost APK SOFT s.r.o., Na Chodovci 2880, Praha 4, Ceska Republika, dale jen "autor".
+
+Bezpecnost a soukromi:
+	Vzhledem k povaze aplikace (obsahuje citlive prihlasovaci udaje, k jeste citlivejsi datove schrance) se autor rozhodl vybrat ten nejtransparentnejsi zpusob pro uzivatele a uvolnil aplikaci jako opensource.
+	Zdrojove kody jsou k dispozici na adrese: http://github.com/b00lean/datoveschranky
+	Binarni podoba aplikace autorizovana autorem je sirena pomoci Android Marketu.
+
+Licence:
+	Aplikace je sirena pod licenci GPL3. V pripade zajmu o komercni typ licence kontaktujte autora na e-mailove adrese info at apksoft.eu.
+	Aplikace vyuziva tez nasledujici knihovny tretich stran:
+		- JAVA_ISDS (http://github.com/xrosecky/JAVA_ISDS) - BSD Licence
+		- ksoap2-android (http://code.google.com/p/ksoap2-android/) - MIT Licence
+
