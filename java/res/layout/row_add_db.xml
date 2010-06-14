@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:id="@+id/row_add_db"
+  >
+<TextView android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/txtNotes" android:textColor="#a0a0a0" android:text="@string/click_to_add_new_db" android:textSize="20dip"></TextView>
+</LinearLayout>

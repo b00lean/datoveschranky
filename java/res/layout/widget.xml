@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="48dip" android:layout_height="48dip">
+
+    <ImageView  
+        android:scaleType="center"
+        android:id="@+id/imgLabel"
+         android:src="@drawable/widget" android:layout_height="fill_parent" android:layout_width="fill_parent"/>
+    
+    <TextView
+    	android:id="@+id/txtLabel" 
+        android:layout_gravity="right|bottom"
+        android:textStyle="bold" android:gravity="bottom|right"  
+
+    	android:paddingRight="5dip"     
+        android:textColor="#ffffffff"
+        
+        android:text="" android:layout_height="fill_parent" android:layout_width="fill_parent"/>
+</FrameLayout>

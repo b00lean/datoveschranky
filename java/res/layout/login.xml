@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF">
+
+
+
+<LinearLayout android:id="@+id/LinearLayout01" android:layout_height="wrap_content" android:gravity="center" android:layout_width="fill_parent" android:layout_marginTop="10dip" android:layout_weight="1">
+	<ImageView android:layout_height="wrap_content" android:id="@+id/IimgLogo" android:background="@drawable/ds_logo" android:layout_width="wrap_content"></ImageView>
+</LinearLayout>
+<LinearLayout android:layout_height="wrap_content" android:orientation="vertical" android:layout_margin="10dip" android:layout_width="fill_parent" android:id="@+id/layoutLogin">
+	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/password" android:textColor="#000000" android:id="@+id/txtPassword" android:textStyle="bold"></TextView>
+	<EditText android:layout_height="wrap_content" android:id="@+id/edtPassword" android:layout_width="fill_parent" android:password="true"></EditText>
+</LinearLayout>
+<Button android:layout_height="wrap_content" android:id="@+id/btnLogin" android:text="@string/enter" android:layout_width="fill_parent" android:layout_margin="10dip" android:paddingBottom="20dip" android:paddingTop="20dip"></Button>
+
+
+</LinearLayout>

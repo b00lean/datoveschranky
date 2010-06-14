@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_height="wrap_content" android:layout_width="fill_parent"
+  android:id="@+id/row_db"
+  android:background="#ffffff">
+
+
+	<LinearLayout android:id="@+id/LinearLayout02" android:layout_height="wrap_content" android:layout_width="fill_parent" android:orientation="vertical">
+		<TextView android:layout_height="wrap_content" android:textStyle="bold" android:text="@string/delivered_message" android:id="@+id/lblTopic" android:background="#fcb813" android:textSize="20dip" android:layout_width="fill_parent" android:gravity="center_horizontal" android:paddingTop="10dip" android:paddingBottom="10dip" android:textColor="#ffffff"></TextView><LinearLayout android:id="@+id/LinearLayout03" android:layout_height="wrap_content" android:layout_width="fill_parent">
+			<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+				
+				<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/imgState" android:layout_margin="10dip"></ImageView>
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:id="@+id/txtState" android:layout_marginLeft="10dip"></TextView>
+			</LinearLayout>
+			<TableLayout android:id="@+id/TableLayout03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5dip">
+				<TableRow android:id="@+id/TableRow02" android:layout_width="wrap_content" android:layout_height="wrap_content">
+					<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:id="@+id/lblMessageId" android:text="@string/message_id"></TextView>
+					<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:id="@+id/txtMessageId"></TextView>
+				</TableRow>
+			</TableLayout>
+		</LinearLayout>
+		<LinearLayout android:id="@+id/LinearLayout04" android:layout_height="wrap_content" android:background="#ffffff" android:orientation="vertical" android:layout_width="fill_parent">
+			<TextView android:layout_height="wrap_content" android:textStyle="bold" android:id="@+id/lblSender" android:layout_width="fill_parent" android:background="#aaaaaa" android:textColor="#000000" android:text="@string/sender2" android:padding="5dip"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:id="@+id/lblName" android:text="@string/name"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/txtSenderName"></TextView>
+			<LinearLayout android:id="@+id/LinearLayout05" android:layout_height="wrap_content" android:layout_width="fill_parent">
+				<LinearLayout android:id="@+id/LinearLayout06" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1">
+					<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:id="@+id/lblBoxId" android:text="@string/box_id"></TextView>
+					<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/txtSenderBoxId"></TextView>
+				</LinearLayout>
+				<LinearLayout android:id="@+id/LinearLayout07" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5dip">
+					<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:id="@+id/lblBoxType" android:text="@string/box_type"></TextView>
+					<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/txtSenderBoxType"></TextView>
+				</LinearLayout>
+			</LinearLayout>
+			<TextView android:layout_height="wrap_content" android:textStyle="bold" android:layout_width="fill_parent" android:background="#aaaaaa" android:textColor="#000000" android:padding="5dip" android:id="@+id/lblRecipient" android:text="@string/recipient2"></TextView>
+			
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:id="@+id/lblName" android:text="@string/name"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/txtRecipientName"></TextView>
+
+			<LinearLayout android:id="@+id/LinearLayout07" android:layout_width="wrap_content" android:layout_height="wrap_content">			
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:id="@+id/lblDelivered" android:text="@string/delivered"></TextView>
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/txtDelivered"></TextView>
+			</LinearLayout>
+			
+			<TextView android:layout_height="wrap_content" android:textStyle="bold" android:layout_width="fill_parent" android:background="#aaaaaa" android:textColor="#000000" android:padding="5dip" android:id="@+id/lblCommonInfo" android:text="@string/common_info"></TextView>
+			
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:text="@string/concern" android:id="@+id/lblConcern"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/txtConcern"></TextView>
+
+			<LinearLayout android:id="@+id/LinearLayout07" android:layout_width="wrap_content" android:layout_height="wrap_content">
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:text="@string/warrant" android:id="@+id/lblWarrant"></TextView>
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/txtWarrant"></TextView>
+			</LinearLayout>
+
+			<LinearLayout android:id="@+id/LinearLayout07" android:layout_width="wrap_content" android:layout_height="wrap_content">
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:text="@string/our_cj" android:id="@+id/lblOurCJ"></TextView>
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/txtOurCJ"></TextView>
+			</LinearLayout>
+			<LinearLayout android:id="@+id/LinearLayout07" android:layout_width="wrap_content" android:layout_height="wrap_content">
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:id="@+id/lblOurSPZN" android:text="@string/our_spzn"></TextView>
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/txtOurSPZN"></TextView>
+			</LinearLayout>
+
+			<LinearLayout android:id="@+id/LinearLayout07" android:layout_width="wrap_content" android:layout_height="wrap_content">
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:id="@+id/lblYourCJ" android:text="@string/your_cj"></TextView>
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/txtYourCJ"></TextView>
+			</LinearLayout>
+
+			<LinearLayout android:id="@+id/LinearLayout07" android:layout_width="wrap_content" android:layout_height="wrap_content">
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:id="@+id/lblYourSPZN" android:text="@string/your_spzn"></TextView>
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/txtYourSPZN"></TextView>
+			</LinearLayout>
+
+			<LinearLayout android:id="@+id/LinearLayout07" android:layout_width="wrap_content" android:layout_height="wrap_content">
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:id="@+id/lbltoHandsName" android:text="@string/to_hands_name"></TextView>
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/txtToHandsName"></TextView>
+			</LinearLayout>
+
+			<LinearLayout android:id="@+id/LinearLayout07" android:layout_width="wrap_content" android:layout_height="wrap_content">
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:id="@+id/lblToHandsEnabled" android:text="@string/to_hands_enabled"></TextView>
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/txtToHandsEnablked"></TextView>
+			</LinearLayout>
+
+			<LinearLayout android:id="@+id/LinearLayout07" android:layout_width="wrap_content" android:layout_height="wrap_content">
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:id="@+id/lblFictionAllowed" android:text="@string/fiction_allow"></TextView>
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/txtFictionAllowed"></TextView>
+			</LinearLayout>
+			
+			<TextView android:layout_height="wrap_content" android:textStyle="bold" android:layout_width="fill_parent" android:background="#aaaaaa" android:textColor="#000000" android:padding="5dip" android:id="@+id/lblAttachements" android:text="@string/attachements"></TextView>
+		</LinearLayout>
+	</LinearLayout>
+
+
+
+
+
+</LinearLayout>

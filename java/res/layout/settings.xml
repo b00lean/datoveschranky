@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF">
+
+
+
+
+<TextView android:layout_height="wrap_content" android:textStyle="bold" android:background="#fcb813" android:textColor="#ffffff" android:layout_width="fill_parent" android:gravity="center_horizontal" android:textSize="20dip" android:paddingTop="10dip" android:paddingBottom="10dip" android:text="@string/settings" android:id="@+id/lblSettings"></TextView><LinearLayout android:id="@+id/LinearLayout02" android:layout_height="wrap_content" android:orientation="vertical" android:layout_margin="10dip" android:layout_width="fill_parent" android:layout_weight="1">
+	
+	
+<LinearLayout android:id="@+id/LinearLayout04" android:layout_width="fill_parent" android:layout_height="fill_parent" android:background="#e0e0e0"><ListView android:id="@+id/lstBoxes" android:layout_height="fill_parent" android:layout_width="fill_parent" android:layout_margin="5dip" android:background="#ffffff" android:cacheColorHint="#ffffff">
+</ListView></LinearLayout></LinearLayout>
+
+
+
+<LinearLayout android:id="@+id/LinearLayout01" android:layout_height="wrap_content" android:layout_width="fill_parent" android:background="#fcb813"><LinearLayout android:id="@+id/LinearLayout03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"></LinearLayout><Button android:layout_height="wrap_content" android:layout_margin="10dip" android:layout_width="wrap_content" android:id="@+id/btnSetPassword" android:text="@string/set_password" android:drawableTop="@drawable/password"></Button>
+</LinearLayout>
+
+</LinearLayout>
