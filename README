@@ -9,9 +9,11 @@ Bezpecnost a soukromi:
 	Zdrojove kody jsou k dispozici na adrese: http://github.com/b00lean/datoveschranky
 	Binarni podoba aplikace autorizovana autorem je sirena pomoci Android Marketu.
 
+
 Licence:
 	Aplikace je sirena pod licenci GPL3. V pripade zajmu o komercni typ licence kontaktujte autora na e-mailove adrese info at apksoft.eu.
 	Aplikace vyuziva tez nasledujici knihovny tretich stran:
 		- JAVA_ISDS (http://github.com/xrosecky/JAVA_ISDS) - BSD Licence
 		- ksoap2-android (http://code.google.com/p/ksoap2-android/) - MIT Licence
 
+Vice informaci naleznete na http://wiki.github.com/b00lean/datoveschranky/
