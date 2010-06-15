@@ -92,7 +92,7 @@ public class SettingsActivity extends Activity implements OnClickListener, OnIte
 		          passwordDialog = new Dialog(this);
 		          passwordDialog.setTitle(R.string.set_password);
 		          
-		          passwordDialog.setContentView(R.layout.dlg_password);
+		          passwordDialog.setContentView(R.layout.dlg_password_set);
 		          Button buttonOK = (Button) passwordDialog.findViewById(R.id.btnSet);
 		          Button buttonCancel = (Button) passwordDialog.findViewById(R.id.btnCancel);
 		          

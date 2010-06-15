@@ -18,7 +18,9 @@
     <string name="box_id">ID schránky:</string>
     <string name="box_name">Jméno schránky:</string>
     <string name="set_password_desc">Zadejte heslo pro vstup do aplikace. Pokud heslo nastavíte prázdné nebude po vás při vstupu do aplikace vyžadováno.</string>
+    <string name="password_desc">Zadejte heslo pro vstup do aplikace.</string>
     
+    <string name="created_by">Vytvořil APK SOFT s.r.o.</string>
     <string name="cancel">Storno</string>
     <string name="set">Nastavit</string>
     <string name="save">Uložit</string>

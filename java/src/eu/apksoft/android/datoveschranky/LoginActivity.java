@@ -20,13 +20,14 @@
 package eu.apksoft.android.datoveschranky;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 import eu.apksoft.android.datoveschranky.helpers.AndroidUtils;
 import eu.apksoft.android.datoveschranky.helpers.PreferencesHelper;
@@ -46,31 +47,52 @@ public class LoginActivity extends Activity implements OnClickListener {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		showOrHideLogin();
+        if (isPasswordSet()) {
+        	showLoginDialog();
+        }
 	}
 
-	private void showOrHideLogin() {
-        if (PreferencesHelper.getPassword(this) == null || PreferencesHelper.getPassword(this).length() == 0) {
-        	((LinearLayout)findViewById(R.id.layoutLogin)).setVisibility(View.INVISIBLE);
-        }else{
-        	((LinearLayout)findViewById(R.id.layoutLogin)).setVisibility(View.VISIBLE);
-        }
+	private boolean isPasswordSet() {
+		return !(PreferencesHelper.getPassword(this) == null || PreferencesHelper.getPassword(this).length() == 0);
+	}
+	
+	private void showLoginDialog() {
+    	//show dialog for entering password
+    	final Dialog passwordDialog = new Dialog(this);
+        passwordDialog.setTitle(R.string.app_name);
+          
+        passwordDialog.setContentView(R.layout.dlg_password);
+        Button buttonOK = (Button) passwordDialog.findViewById(R.id.btnOK);
+      
+        buttonOK.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				EditText edtPassword = (EditText)passwordDialog.findViewById(R.id.edtPassword);
+				String password = edtPassword.getText().toString();
+				if (tryToLogin(password)) {
+					passwordDialog.dismiss(); //user logged in, we can hide this dialog
+				}
+			}
+        });
+        passwordDialog.show(); 
+	}
+
+	private boolean tryToLogin(String password) {
+		if (password.equalsIgnoreCase(PreferencesHelper.getPassword(this))) {
+	        startActivity(new Intent(this, MainActivity.class));
+	        return true;
+		}else{
+		    Toast.makeText(this, this.getResources().getText(R.string.wrong_password), Toast.LENGTH_SHORT).show();
+		    return false;
+		}
 	}
 
 	@Override
 	public void onClick(View view) {
 		switch(view.getId()) {
 		case R.id.btnLogin:
-			EditText edtPassword = (EditText)findViewById(R.id.edtPassword);
-			if (edtPassword.isShown()) {
-				String password = edtPassword.getText().toString();
-				
-				if (password.equalsIgnoreCase(PreferencesHelper.getPassword(this))) {
-			        startActivity(new Intent(this, MainActivity.class));
-				}else{
-				    int duration = Toast.LENGTH_SHORT;
-				    Toast.makeText(this, this.getResources().getText(R.string.wrong_password), duration).show();
-				}
+			if (isPasswordSet()) {
+				showLoginDialog();
 			}else{
 				startActivity(new Intent(this, MainActivity.class));
 			}
