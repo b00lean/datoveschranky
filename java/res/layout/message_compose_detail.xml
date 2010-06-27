@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_height="wrap_content" android:layout_width="fill_parent"
+  android:id="@+id/row_db"
+  android:background="#ffffff">
+
+
+	<LinearLayout android:id="@+id/LinearLayout02" android:layout_height="wrap_content" android:layout_width="fill_parent" android:orientation="vertical">
+		<TextView android:layout_height="wrap_content" android:textStyle="bold" android:text="@string/new_message" android:id="@+id/lblTopic" android:background="#fcb813" android:textSize="20dip" android:layout_width="fill_parent" android:gravity="center_horizontal" android:paddingTop="10dip" android:paddingBottom="10dip" android:textColor="#ffffff"></TextView>
+		<LinearLayout android:id="@+id/LinearLayout04" android:layout_height="wrap_content" android:background="#ffffff" android:orientation="vertical" android:layout_width="fill_parent">
+			<TextView android:layout_height="wrap_content" android:textStyle="bold" android:id="@+id/lblSender" android:layout_width="fill_parent" android:background="#aaaaaa" android:textColor="#000000" android:text="@string/sender2" android:padding="5dip"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:id="@+id/lblName" android:text="@string/name"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/txtSenderName"></TextView>
+			<LinearLayout android:id="@+id/LinearLayout05" android:layout_height="wrap_content" android:layout_width="fill_parent">
+				<LinearLayout android:id="@+id/LinearLayout06" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1">
+					<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:id="@+id/lblBoxId" android:text="@string/box_id"></TextView>
+					<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/txtSenderBoxId"></TextView>
+				</LinearLayout>
+				
+			</LinearLayout>
+			<TextView android:layout_height="wrap_content" android:textStyle="bold" android:layout_width="fill_parent" android:background="#aaaaaa" android:textColor="#000000" android:padding="5dip" android:id="@+id/lblRecipient" android:text="@string/recipient2"></TextView>
+			
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:id="@+id/lblName" android:text="@string/name"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/txtRecipientName"></TextView>
+
+			<LinearLayout android:id="@+id/LinearLayout07" android:layout_width="wrap_content" android:layout_height="wrap_content">			
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:id="@+id/lblBoxId" android:text="@string/box_id"></TextView>
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/txtRecipientBoxId"></TextView>
+			</LinearLayout>
+			
+			<TextView android:layout_height="wrap_content" android:textStyle="bold" android:layout_width="fill_parent" android:background="#aaaaaa" android:textColor="#000000" android:padding="5dip" android:id="@+id/lblCommonInfo" android:text="@string/common_info"></TextView>
+			
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:text="@string/concern" android:id="@+id/lblConcern"></TextView>
+			<EditText android:layout_width="fill_parent" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/edtConcern"></EditText>
+
+			
+
+			<LinearLayout android:id="@+id/LinearLayout07" android:layout_width="fill_parent" android:layout_height="wrap_content">
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:text="@string/our_cj" android:id="@+id/lblOurCJ"></TextView>
+				<EditText android:layout_width="fill_parent" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/edtOurCJ"></EditText>
+			</LinearLayout>
+			<LinearLayout android:id="@+id/LinearLayout07" android:layout_width="fill_parent" android:layout_height="wrap_content">
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:id="@+id/lblOurSPZN" android:text="@string/our_spzn"></TextView>
+				<EditText android:layout_width="fill_parent" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/edtOurSPZN"></EditText>
+			</LinearLayout>
+
+			<LinearLayout android:id="@+id/LinearLayout07" android:layout_width="fill_parent" android:layout_height="wrap_content">
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:id="@+id/lblYourCJ" android:text="@string/your_cj"></TextView>
+				<EditText android:layout_width="fill_parent" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/edtYourCJ"></EditText>
+			</LinearLayout>
+
+			<LinearLayout android:id="@+id/LinearLayout07" android:layout_width="fill_parent" android:layout_height="wrap_content">
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:id="@+id/lblYourSPZN" android:text="@string/your_spzn"></TextView>
+				<EditText android:layout_width="fill_parent" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/edtYourSPZN"></EditText>
+			</LinearLayout>
+
+			<LinearLayout android:id="@+id/LinearLayout07" android:layout_width="fill_parent" android:layout_height="wrap_content">
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:id="@+id/lbltoHandsName" android:text="@string/to_hands_name"></TextView>
+				<EditText android:layout_width="fill_parent" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip" android:id="@+id/edtToHandsName"></EditText>
+			</LinearLayout>
+
+			<LinearLayout android:id="@+id/LinearLayout07" android:layout_width="fill_parent" android:layout_height="wrap_content">
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:textStyle="bold" android:id="@+id/lblToHandsEnabled" android:text="@string/to_hands_enabled"></TextView>
+				<CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:id="@+id/chkToHandsEnabled"></CheckBox><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:layout_marginLeft="10dip"></TextView>
+			
+</LinearLayout>
+
+			
+			
+			<TextView android:layout_height="wrap_content" android:textStyle="bold" android:layout_width="fill_parent" android:background="#aaaaaa" android:textColor="#000000" android:padding="5dip" android:id="@+id/lblAttachements" android:text="@string/attachements"></TextView>
+		</LinearLayout>
+	</LinearLayout>
+
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_height="wrap_content" android:layout_width="fill_parent"
+  android:id="@+id/footer"
+  android:background="#ffffff"
+  android:orientation="vertical"
+  >
+  <Button android:layout_height="wrap_content" android:id="@+id/btnAddAttachment" android:text="@string/add_attachment" android:layout_width="fill_parent"></Button>
+  <Button android:layout_height="wrap_content" android:id="@+id/btnSend" android:text="@string/send_message" android:layout_width="fill_parent"></Button>
+</LinearLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_height="wrap_content" android:layout_width="fill_parent"
+  android:id="@+id/row_recipient"
+  android:orientation="vertical" android:minHeight="60dip">
+
+	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:id="@+id/txtBoxName" android:textStyle="bold" layout_="2" layout_span="2" ></TextView>
+	<TableLayout android:id="@+id/TableLayout03" android:layout_width="wrap_content" android:layout_height="wrap_content">
+		<TableRow android:id="@+id/TableRow03" android:layout_width="wrap_content" android:layout_height="wrap_content">
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:id="@+id/lblBoxID" android:text="@string/box_id"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#000000" android:id="@+id/txtBoxID"></TextView>
+		</TableRow>
+	</TableLayout>
+
+
+</LinearLayout>
