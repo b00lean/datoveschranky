@@ -11,6 +11,9 @@
     <string name="databox">Datová schránka</string>
     <string name="settings">Nastavení</string>
     <string name="help">Nápověda</string>
+    <string name="add_attachment">Přidat přílohu</string>
+    <string name="choose_picture">Vyberte fotku</string>
+    <string name="new_message">Nová zpráva</string>
     <string name="no_databoxes_defined">Nemáte definovány žádné datové schránky. Datovou schránku lze přidat v nastavení aplikace.</string>
     <string name="set_password">Nastavit heslo</string>
     <string name="click_to_add_new_db">Kliknutím zde přidáte novou datovou schránku</string>
@@ -24,11 +27,20 @@
     <string name="cancel">Storno</string>
     <string name="set">Nastavit</string>
     <string name="save">Uložit</string>
+    <string name="continue_">Pokračovat</string>
     <string name="new_password_set">Nové heslo pro vstup do aplikace bylo nastaveno.</string>
     <string name="password_not_required">Heslo pro vstup do aplikace bylo vypnuto.</string>
     <string name="new_box_access">Nový přístup do datové schránky</string>
     <string name="accessing_db">Probíhá komunikace s datovou schránkou...</string>
     <string name="comm_error">Při komunikaci s datovou schránkou došlo k chybě. Zkontolujte prosím připojení k internetu a přihlašovací údaje k datové schránce.</string>
+    <string name="error_unknown_host">Při komunikaci s datovou schránkou došlo k chybě. Zkontolujte prosím připojení k internetu. Server nebyl nalezen.</string>
+    <string name="error_ssl_exception">Při komunikaci s datovou schránkou došlo k chybě. Server nemá důvěryhodný certifikát.</string>
+    <string name="error_keystore_exception">Došlo k chybě při načítání certifikátů.</string>
+    <string name="error_access_denied">Při komunikaci s datovou schránkou došlo k chybě. Přihlašovací údaje k datové schránce nejsou platné.</string>
+    <string name="unknown_error">Nastala neznámá chyba: %s</string>
+    
+    
+    
     <string name="new_databox_added">Nová datová schránka byla přidána.</string>
     <string name="databox_saved">Změněné přihlašovací údaje datové schránky byly uloženy.</string>
     <string name="databox_removed">Datová schránka byla odebrána.</string>
@@ -69,6 +81,9 @@
     <string name="fiction_allow">Doručit fikcí povoleno:</string>
     <string name="yes">ano</string>
     <string name="no">ne</string>
+    <string name="search_recipient">Vyhledání příjemce</string>
+    <string name="search">Vyhledat</string>
+    <string name="name_or_boxid">Název:</string>
     <string name="no_message">Zádné zprávy.</string>
     <string name="could_not_read_messages_retry">Seznam zpráv se nepodařilo stáhnout, kliknutím zde zopakujete pokus.</string>
     <string name="save_attachment_on_sdcard">Uložit přílohu na SD kartu</string>

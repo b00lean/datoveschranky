@@ -18,30 +18,26 @@
  *
  */
 package eu.apksoft.android.datoveschranky.ws;
-import java.io.*;
-	
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 import org.kobjects.base64.Base64;
-import org.ksoap2.transport.*;
-import org.ksoap2.*;
-import org.xmlpull.v1.*;
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.transport.ServiceConnection;
+import org.ksoap2.transport.Transport;
+import org.xmlpull.v1.XmlPullParserException;
 
 public class MyAndroidTransport extends Transport {
 	
 		private String username;
 		private String password;
-	    /**
-	     * Creates instance of HttpTransport with set url
-	     *
-	     * @param url
-	     *            the destination to POST SOAP data
-	     */
-	    public MyAndroidTransport(String url) {
+
+		public MyAndroidTransport(String url, String username, String password) {
 	        super(url);
-	    	//debug = true;
-	    }
-	    public MyAndroidTransport(String url, String username, String password) {
-	        super(url);
-	    	//debug = true;
+	    	debug = false;
 	    	this.username = username;
 	    	this.password = password;
 	    }
@@ -78,7 +74,7 @@ public class MyAndroidTransport extends Transport {
 	                os.write(requestData, 0, requestData.length);
 	                os.flush();
 	                os.close();
-	                    requestData = null;
+	                requestData = null;
 	               
 	                InputStream is;
 	                try {

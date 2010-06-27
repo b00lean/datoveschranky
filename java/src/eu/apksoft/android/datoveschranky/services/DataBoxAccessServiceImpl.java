@@ -34,6 +34,7 @@ import cz.abclinuxu.datoveschranky.common.entities.OwnerInfo;
 import cz.abclinuxu.datoveschranky.common.entities.UserInfo;
 import cz.abclinuxu.datoveschranky.common.interfaces.DataBoxAccessService;
 import eu.apksoft.android.datoveschranky.ws.DSUtils;
+import eu.apksoft.android.datoveschranky.ws.ServiceException;
 
 public class DataBoxAccessServiceImpl implements DataBoxAccessService {
 
@@ -66,12 +67,14 @@ public class DataBoxAccessServiceImpl implements DataBoxAccessService {
 			
 		} catch (SoapFault e) {
 			e.printStackTrace();
+			throw new ServiceException(e);
 		} catch (IOException e) {
 			e.printStackTrace();
+			throw new ServiceException(e);
 		} catch (XmlPullParserException e) {
 			e.printStackTrace();
+			throw new ServiceException(e);
 		}
-		return null;
 	}
 	
 	@Override
@@ -94,12 +97,14 @@ public class DataBoxAccessServiceImpl implements DataBoxAccessService {
 			return DSUtils.parseUserInfo(response);
 		} catch (SoapFault e) {
 			e.printStackTrace();
+			throw new ServiceException(e);
 		} catch (IOException e) {
 			e.printStackTrace();
+			throw new ServiceException(e);
 		} catch (XmlPullParserException e) {
 			e.printStackTrace();
+			throw new ServiceException(e);
 		}
-		return null;
 	}
 
 	
@@ -123,12 +128,14 @@ public class DataBoxAccessServiceImpl implements DataBoxAccessService {
 			return DSUtils.toGregorianCalendar(response.toString());
 		} catch (SoapFault e) {
 			e.printStackTrace();
+			throw new ServiceException(e);
 		} catch (IOException e) {
 			e.printStackTrace();
+			throw new ServiceException(e);
 		} catch (XmlPullParserException e) {
 			e.printStackTrace();
+			throw new ServiceException(e);
 		}
-		return null;
 	}
 
 

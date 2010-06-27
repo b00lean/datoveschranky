@@ -38,6 +38,7 @@ import cz.abclinuxu.datoveschranky.common.impl.DataBoxException;
 import cz.abclinuxu.datoveschranky.common.interfaces.AttachmentStorer;
 import cz.abclinuxu.datoveschranky.common.interfaces.DataBoxDownloadService;
 import eu.apksoft.android.datoveschranky.ws.DSUtils;
+import eu.apksoft.android.datoveschranky.ws.ServiceException;
 
 public class DataBoxDownloadServiceImpl implements DataBoxDownloadService{
 
@@ -102,12 +103,14 @@ public class DataBoxDownloadServiceImpl implements DataBoxDownloadService{
 			return newEnvelope;
 		} catch (SoapFault e) {
 			e.printStackTrace();
+			throw new ServiceException(e);
 		} catch (IOException e) {
 			e.printStackTrace();
+			throw new ServiceException(e);
 		} catch (XmlPullParserException e) {
 			e.printStackTrace();
+			throw new ServiceException(e);
 		}
-		return null;
 	}
 	
 	public Message downloadMessage(String messageId, AttachmentStorer storer) {
@@ -133,12 +136,14 @@ public class DataBoxDownloadServiceImpl implements DataBoxDownloadService{
 			return new Message(newEnvelope,attachements);
 		} catch (SoapFault e) {
 			e.printStackTrace();
+			throw new ServiceException(e);
 		} catch (IOException e) {
 			e.printStackTrace();
+			throw new ServiceException(e);
 		} catch (XmlPullParserException e) {
 			e.printStackTrace();
+			throw new ServiceException(e);
 		}
-		return null;
 	}
 
 	@Override

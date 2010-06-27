@@ -26,10 +26,8 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -68,6 +66,7 @@ public class MessagesActivity extends Activity implements OnClickListener, OnIte
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidUtils.registerForExceptions(this);
         setContentView(R.layout.messages);
         
         
@@ -137,25 +136,15 @@ public class MessagesActivity extends Activity implements OnClickListener, OnIte
 				    	messagesAdapter.setShowIsEmpty(false);
 				    	messagesAdapter.setShowConnectionError(false);
 				    }
-				    
 			    } catch (RuntimeException e) {
-					e.printStackTrace();
-	                new AlertDialog.Builder(MessagesActivity.this)
-	                .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener(){
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-						}
-	                })
-	                .setMessage(R.string.comm_error)
-	                .show();
-	                
 	                if (messageEnvelopes.size() == 0) {
 	                	messagesAdapter.setShowIsEmpty(true);
 	                }else{
 	                	messagesAdapter.setShowIsEmpty(false);
 	                }
 			    	messagesAdapter.setShowConnectionError(true);
-	                
+
+			    	AndroidUtils.showError(MessagesActivity.this, e);
 				}finally{
 					messagesAdapter.notifyDataSetChanged();
 					dismissDialog(0);

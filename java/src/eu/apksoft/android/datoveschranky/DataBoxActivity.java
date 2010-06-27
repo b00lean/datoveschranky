@@ -29,6 +29,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import eu.apksoft.android.datoveschranky.dto.DataBoxAccess;
+import eu.apksoft.android.datoveschranky.helpers.AndroidUtils;
 import eu.apksoft.android.datoveschranky.helpers.PreferencesHelper;
 
 public class DataBoxActivity extends Activity implements OnClickListener {
@@ -41,11 +42,12 @@ public class DataBoxActivity extends Activity implements OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidUtils.registerForExceptions(this);
         setContentView(R.layout.databox);
         
         findViewById(R.id.btnDeliveredMessages).setOnClickListener(this);
         findViewById(R.id.btnSentMessages).setOnClickListener(this);
-        //findViewById(R.id.btnSendMessage).setOnClickListener(this); //TODO: not implemented yet
+        findViewById(R.id.btnSendMessage).setOnClickListener(this);
         
         List<DataBoxAccess> dataBoxAccesses = PreferencesHelper.getDataBoxAccesses(this);
         Bundle extras = getIntent().getExtras();
@@ -69,6 +71,11 @@ public class DataBoxActivity extends Activity implements OnClickListener {
 				intent = new Intent(this, MessagesActivity.class);
 				intent.putExtra(MessagesActivity.EXTRA_KEY_DATACCESS_ID, position );
 				intent.putExtra(MessagesActivity.EXTRA_KEY_MESSAGE_TYPE, MessagesActivity.MESSAGE_TYPE_SENT);
+				startActivity(intent);
+				break;
+			case R.id.btnSendMessage:
+				intent = new Intent(this, SearchActivity.class);
+				intent.putExtra(SearchActivity.EXTRA_KEY_DATACCESS_ID, position);
 				startActivity(intent);
 				break;
 		}

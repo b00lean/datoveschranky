@@ -39,6 +39,7 @@ public class LoginActivity extends Activity implements OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidUtils.registerForExceptions(this);
         setContentView(R.layout.login);
         findViewById(R.id.btnLogin).setOnClickListener(this);
 		AndroidUtils.initSSLIfNeeded(this);

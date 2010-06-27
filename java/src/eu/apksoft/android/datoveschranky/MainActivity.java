@@ -34,6 +34,7 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import eu.apksoft.android.datoveschranky.adapters.DataBoxAccessAdapter;
 import eu.apksoft.android.datoveschranky.dto.DataBoxAccess;
+import eu.apksoft.android.datoveschranky.helpers.AndroidUtils;
 import eu.apksoft.android.datoveschranky.helpers.PreferencesHelper;
 
 public class MainActivity extends Activity implements OnClickListener, OnItemClickListener {
@@ -44,6 +45,7 @@ public class MainActivity extends Activity implements OnClickListener, OnItemCli
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidUtils.registerForExceptions(this);
         setContentView(R.layout.main);
         findViewById(R.id.btnSettings).setOnClickListener(this);
         findViewById(R.id.btnHelp).setOnClickListener(this);
@@ -113,6 +115,7 @@ public class MainActivity extends Activity implements OnClickListener, OnItemCli
 			Intent intent = new Intent(this, DataBoxActivity.class);
 			intent.putExtra(DataBoxActivity.EXTRA_KEY_DATACCESS_ID, position );
 			startActivity(intent);
+
 		}
 	}
 }

@@ -69,6 +69,7 @@ public class MessageActivity extends Activity implements OnClickListener, OnItem
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidUtils.registerForExceptions(this);
         setContentView(R.layout.message);
 
         
@@ -169,7 +170,7 @@ public class MessageActivity extends Activity implements OnClickListener, OnItem
     	((TextView)findViewById(R.id.txtYourCJ)).setText(envelope.getRecipientIdent().getRefNumber());
     	((TextView)findViewById(R.id.txtYourSPZN)).setText(envelope.getRecipientIdent().getIdent());
     	((TextView)findViewById(R.id.txtToHandsName)).setText(envelope.getToHands());
-    	((TextView)findViewById(R.id.txtToHandsEnablked)).setText(AndroidUtils.formatBoolean(this, envelope.getPersonalDelivery()));
+    	((TextView)findViewById(R.id.txtToHandsEnabled)).setText(AndroidUtils.formatBoolean(this, envelope.getPersonalDelivery()));
     	((TextView)findViewById(R.id.txtFictionAllowed)).setText(AndroidUtils.formatBoolean(this, envelope.getAllowSubstDelivery()));
 	}
 
@@ -195,18 +196,8 @@ public class MessageActivity extends Activity implements OnClickListener, OnItem
 			    	attachmentAdapter.notifyDataSetChanged();
 			    	findViewById(R.id.lstAttachements).setVisibility(View.VISIBLE);
 			    } catch (RuntimeException e) {
-					e.printStackTrace();
-	                new AlertDialog.Builder(MessageActivity.this)
-	                .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener(){
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-						}
-	                })
-	                .setMessage(R.string.comm_error)
-	                .show();
-	                
+					AndroidUtils.showError(MessageActivity.this, e);
 	                finish(); //go back
-	                
 				}finally {
 					dismissDialog(0);
 				}

@@ -22,10 +22,8 @@ package eu.apksoft.android.datoveschranky;
 import java.util.List;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.ContextMenu;
@@ -46,6 +44,7 @@ import cz.abclinuxu.datoveschranky.common.entities.OwnerInfo;
 import cz.abclinuxu.datoveschranky.common.interfaces.DataBoxAccessService;
 import eu.apksoft.android.datoveschranky.adapters.DataBoxAccessAdapter;
 import eu.apksoft.android.datoveschranky.dto.DataBoxAccess;
+import eu.apksoft.android.datoveschranky.helpers.AndroidUtils;
 import eu.apksoft.android.datoveschranky.helpers.PreferencesHelper;
 import eu.apksoft.android.datoveschranky.services.DataBoxServicesImpl;
 import eu.apksoft.android.datoveschranky.ws.DSUtils;
@@ -67,6 +66,7 @@ public class SettingsActivity extends Activity implements OnClickListener, OnIte
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidUtils.registerForExceptions(this);
         setContentView(R.layout.settings);
         findViewById(R.id.btnSetPassword).setOnClickListener(this);
         
@@ -173,16 +173,7 @@ public class SettingsActivity extends Activity implements OnClickListener, OnIte
 							
 							accessDialog.dismiss();
 						} catch (RuntimeException e) {
-							e.printStackTrace();
-			                new AlertDialog.Builder(SettingsActivity.this)
-			                .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener(){
-
-								@Override
-								public void onClick(DialogInterface dialog, int which) {
-								}
-			                })
-			                .setMessage(R.string.comm_error)
-			                .show();
+							AndroidUtils.showError(SettingsActivity.this, e);
 						}
 						dismissDialog(0);
 					}

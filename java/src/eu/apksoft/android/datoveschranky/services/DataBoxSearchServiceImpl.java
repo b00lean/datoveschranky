@@ -19,13 +19,24 @@
  */
 package eu.apksoft.android.datoveschranky.services;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.SoapFault;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.Transport;
+import org.xmlpull.v1.XmlPullParserException;
 
 import cz.abclinuxu.datoveschranky.common.entities.DataBox;
 import cz.abclinuxu.datoveschranky.common.entities.DataBoxState;
+import cz.abclinuxu.datoveschranky.common.entities.DataBoxType;
+import cz.abclinuxu.datoveschranky.common.entities.OwnerInfo;
 import cz.abclinuxu.datoveschranky.common.interfaces.DataBoxSearchService;
+import eu.apksoft.android.datoveschranky.ws.DSUtils;
+import eu.apksoft.android.datoveschranky.ws.ServiceException;
 
 public class DataBoxSearchServiceImpl implements DataBoxSearchService {
 
@@ -48,7 +59,58 @@ public class DataBoxSearchServiceImpl implements DataBoxSearchService {
 
 	@Override
 	public List<DataBox> findOVMsByName(String prefix) {
-		throw new UnsupportedOperationException("Unimplemented.");
+	    String METHOD_NAME="FindDataBox";
+	    String SOAP_ACTION=DSUtils.NAMESPACE+"/"+METHOD_NAME;
+
+	    SoapObject request = new SoapObject(DSUtils.NAMESPACE,METHOD_NAME);
+	    
+	    SoapObject so = new SoapObject(DSUtils.NAMESPACE, "dbOwnerInfo");
+	    so.addProperty("firmName", prefix);
+	    so.addProperty("dbType",DataBoxType.OVM.toString()); //Only OVM for now
+	    request.addProperty("dbOwnerInfo", so);
+	    
+	    SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+	    envelope.setOutputSoapObject(request);
+	    
+	    try {
+			transport.call(SOAP_ACTION, envelope);
+			Object res = envelope.getResponse();
+			List<DataBox> result = new ArrayList<DataBox>();
+			
+			if(res instanceof SoapObject){
+				SoapObject response = ((SoapObject)res);
+				int count = response.getPropertyCount();
+				
+				if (count == 0) {
+					return result;
+				}else{
+					for (int i = 0; i < count; i++) {
+						Object r = response.getProperty(i);
+						
+						if (r instanceof SoapObject) { //must be our owner object
+							SoapObject property = (SoapObject)r;
+							OwnerInfo ownerInfo = DSUtils.parseOwnerInfo(property);
+							result.add(new DataBox(ownerInfo.getDataBoxID(),ownerInfo.getFirmName(), null));
+						}else{
+							result.clear();
+							return result;
+						}
+					}
+					return result;
+				}
+	    	}else{
+	    		return result; 
+	    	}
+		} catch (SoapFault e) {
+			e.printStackTrace();
+			throw new ServiceException(e);
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new ServiceException(e);
+		} catch (XmlPullParserException e) {
+			e.printStackTrace();
+			throw new ServiceException(e);
+		}
 	}
 
 }

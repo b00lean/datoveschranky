@@ -39,6 +39,7 @@ import cz.abclinuxu.datoveschranky.common.entities.MessageState;
 import cz.abclinuxu.datoveschranky.common.entities.MessageType;
 import cz.abclinuxu.datoveschranky.common.interfaces.DataBoxMessagesService;
 import eu.apksoft.android.datoveschranky.ws.DSUtils;
+import eu.apksoft.android.datoveschranky.ws.ServiceException;
 
 public class DataBoxMessagesServiceImpl implements DataBoxMessagesService{
 
@@ -85,13 +86,14 @@ public class DataBoxMessagesServiceImpl implements DataBoxMessagesService{
 			return result;
 		} catch (SoapFault e) {
 			e.printStackTrace();
+			throw new ServiceException(e);
 		} catch (IOException e) {
 			e.printStackTrace();
+			throw new ServiceException(e);
 		} catch (XmlPullParserException e) {
 			e.printStackTrace();
+			throw new ServiceException(e);
 		}
-
-		return null;
 	}
 
 	@Override
@@ -125,13 +127,14 @@ public class DataBoxMessagesServiceImpl implements DataBoxMessagesService{
 			return result;
 		} catch (SoapFault e) {
 			e.printStackTrace();
+			throw new ServiceException(e);
 		} catch (IOException e) {
 			e.printStackTrace();
+			throw new ServiceException(e);
 		} catch (XmlPullParserException e) {
 			e.printStackTrace();
+			throw new ServiceException(e);
 		}
-
-		return null;
 	}
 
 	@Override

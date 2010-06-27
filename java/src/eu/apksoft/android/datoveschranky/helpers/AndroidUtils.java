@@ -21,6 +21,7 @@ package eu.apksoft.android.datoveschranky.helpers;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.UnknownHostException;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -29,18 +30,31 @@ import java.security.cert.CertificateException;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLException;
 import javax.net.ssl.TrustManager;
 
+import org.xmlpull.v1.XmlPullParserException;
+
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Resources.NotFoundException;
+
+import com.nullwire.trace.ExceptionHandler;
+
 import cz.abclinuxu.datoveschranky.common.entities.LegalTitle;
 import cz.abclinuxu.datoveschranky.common.entities.MessageEnvelope;
 import eu.apksoft.android.datoveschranky.R;
 import eu.apksoft.android.datoveschranky.ws.MyAndroidTrustManager;
+import eu.apksoft.android.datoveschranky.ws.ServiceException;
 
 public class AndroidUtils {
 	private static MessageEnvelope selectedEnvelope;
 	private static boolean sslInited = false; 
+	
+	public static void registerForExceptions(Context context) {
+		ExceptionHandler.register(context, "http://www.apksoft.eu/android/exception.jsp");
+	}
 	
 	public static void initSSLIfNeeded(Context context) {
 		if (!sslInited) {
@@ -57,19 +71,19 @@ public class AndroidUtils {
 			        HttpsURLConnection.setDefaultSSLSocketFactory(sslcontext.getSocketFactory());
 	
 				} catch (KeyStoreException e) {
-					e.printStackTrace();
+					showError(context, R.string.error_keystore_exception);
 				} catch (NotFoundException e) {
-					e.printStackTrace();
+					showError(context, R.string.error_keystore_exception);
 				} catch (CertificateException e) {
-					e.printStackTrace();
+					showError(context, R.string.error_keystore_exception);
 				} catch (IOException e) {
-					e.printStackTrace();
+					showError(context, R.string.error_keystore_exception);
 				}
 		        
 			} catch (KeyManagementException e1) {
-				e1.printStackTrace();
+				showError(context, R.string.error_keystore_exception);
 			} catch (NoSuchAlgorithmException e1) {
-				e1.printStackTrace();
+				showError(context, R.string.error_keystore_exception);
 			}
 			sslInited =true;
 		}
@@ -118,5 +132,43 @@ public class AndroidUtils {
 		AndroidUtils.selectedEnvelope = selectedEnvelope;
 	}
 
+	public static void showError(Context context,String errorMessage) {
+		new AlertDialog.Builder(context)
+        .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener(){
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+			}
+        })
+        .setMessage(errorMessage)
+        .show();
+	}
+	
+	public static void showError(Context context,int errorMessage) {
+		showError(context, context.getResources().getString(errorMessage));
+	}
+
+	public static void showError(Context context, Throwable e) {
+		if (e instanceof ServiceException) {
+			e = ((ServiceException)e).getCause();
+		}
+		e.printStackTrace();
+		
+		int errorMessage = R.string.unknown_error;
+		
+		if (e instanceof UnknownHostException) {
+			errorMessage = R.string.error_unknown_host;
+		}else if (e instanceof SSLException) {
+			errorMessage = R.string.error_ssl_exception;
+		}else if (e instanceof XmlPullParserException) {
+			errorMessage = R.string.error_access_denied;
+		}else if (e instanceof IOException) {
+			errorMessage = R.string.comm_error;
+		}
+		if (errorMessage == R.string.unknown_error) {
+			showError(context, context.getResources().getString(errorMessage, e.getMessage()));
+		}else{
+			showError(context, errorMessage);
+		}
+	}
 
 }
