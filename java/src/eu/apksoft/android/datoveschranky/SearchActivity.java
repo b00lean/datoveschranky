@@ -46,7 +46,7 @@ import eu.apksoft.android.datoveschranky.ws.DSUtils;
 
 public class SearchActivity extends Activity implements OnClickListener, OnItemClickListener{
 	public static final String EXTRA_KEY_DATACCESS_ID = "EXTRA_KEY_DATACCESS_ID";
-	private int position = 0;
+	private int accessId = 0;
 	private DataBoxAdapter adapter;
 	final Handler asyncHandler = new Handler();
 	
@@ -59,7 +59,7 @@ public class SearchActivity extends Activity implements OnClickListener, OnItemC
 
 		
 	    Bundle extras = getIntent().getExtras();
-		position = extras.getInt(EXTRA_KEY_DATACCESS_ID,0);
+	    accessId = extras.getInt(EXTRA_KEY_DATACCESS_ID,0);
 	    
 	    findViewById(R.id.btnSearch).setOnClickListener(this);
 
@@ -90,7 +90,7 @@ public class SearchActivity extends Activity implements OnClickListener, OnItemC
 		asyncHandler.postDelayed(new Runnable() {
 			public void run() {
 				List<DataBoxAccess> dataBoxAccesses = PreferencesHelper.getDataBoxAccesses(SearchActivity.this);
-			    DataBoxAccess dataBoxAccess = dataBoxAccesses.get(position);
+			    DataBoxAccess dataBoxAccess = dataBoxAccesses.get(accessId);
 				DataBoxServicesImpl services = new DataBoxServicesImpl(DSUtils.SERVICE_URL, dataBoxAccess.getPersonId(), dataBoxAccess.getPassword());
 				
 				DataBoxSearchService dataBoxSearchService = services.getDataBoxSearchService();
@@ -133,7 +133,7 @@ public class SearchActivity extends Activity implements OnClickListener, OnItemC
 	public void onItemClick(AdapterView<?> adapterView, View view, final int position, long id) {
 		DataBox item = (DataBox) adapter.getItem(position);
 		Intent intent = new Intent(this, MessageComposeActivity.class);
-		intent.putExtra(MessageComposeActivity.EXTRA_KEY_DATACCESS_ID, position );
+		intent.putExtra(MessageComposeActivity.EXTRA_KEY_DATACCESS_ID, accessId );
 		intent.putExtra(MessageComposeActivity.EXTRA_KEY_RECIPIENT_DATABOX_ID, item.getdataBoxID());
 		intent.putExtra(MessageComposeActivity.EXTRA_KEY_RECIPIENT_DATABOX_NAME, item.getIdentity());
 		startActivity(intent);
