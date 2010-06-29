@@ -25,14 +25,20 @@ public class DataBoxAccess {
 	private String boxId;
 	private String boxName;
 	private String lastKnownMessageId;
+	private long passwordExpires;
+	private long passwordExpirationLastChecked;
 	
-	public DataBoxAccess(String personId, String password, String boxId, String boxName, String lastKnownMessageId) {
+	public static final long UNKNOWN_TIME = 0;
+	
+	public DataBoxAccess(String personId, String password, String boxId, String boxName, String lastKnownMessageId, long passwordExpires, long passwordExpirationLastChecked) {
 		super();
 		this.personId = personId;
 		this.password = password;
 		this.boxId = boxId;
 		this.boxName = boxName;
 		this.lastKnownMessageId = lastKnownMessageId;
+		this.passwordExpires = passwordExpires;
+		this.passwordExpirationLastChecked = passwordExpirationLastChecked;
 	}
 
 	public String getPersonId() {
@@ -74,6 +80,23 @@ public class DataBoxAccess {
 	public void setLastKnownMessageId(String lastKnownMessageId) {
 		this.lastKnownMessageId = lastKnownMessageId;
 	}
+
+	public long getPasswordExpires() {
+		return passwordExpires;
+	}
+
+	public void setPasswordExpires(long passwordExpires) {
+		this.passwordExpires = passwordExpires;
+	}
+
+	public long getPasswordExpirationLastChecked() {
+		return passwordExpirationLastChecked;
+	}
+
+	public void setPasswordExpirationLastChecked(long passwordExpirationLastChecked) {
+		this.passwordExpirationLastChecked = passwordExpirationLastChecked;
+	}
+
 
 	
 	

@@ -39,7 +39,10 @@
     <string name="error_access_denied">Při komunikaci s datovou schránkou došlo k chybě. Přihlašovací údaje k datové schránce nejsou platné.</string>
     <string name="unknown_error">Nastala neznámá chyba: %s</string>
     
-    
+    <string name="password_expires">Platnost hesla datové schránky vyprší: %s</string>
+    <string name="password_expires2">Platnost hesla do:</string>
+    <string name="password_expires_soon">Platnost hesla brzy vyprší</string>
+    <string name="password_expires3">Platnost hesla datové schránky %s vyprší: %s. Přihlašte se na stránky http://www.mojedatovaschranka.cz/ pro jeho změnu.</string>
     
     <string name="new_databox_added">Nová datová schránka byla přidána.</string>
     <string name="databox_saved">Změněné přihlašovací údaje datové schránky byly uloženy.</string>
@@ -100,8 +103,9 @@
     V případě problémů nezapomeňte uvést přesný typ vašeho telefonu.\n
     \n
     Funkce o kterých možná nevíte:\n
-    Aplikace obsahuje též widget kontrolující schránky každou hodinu a upozorňující na došlé zprávy.\n
-    Widget lze umístit standartním způsobem na plochu.\n
+    - Aplikace obsahuje též widget kontrolující schránky každou hodinu a upozorňující na došlé zprávy.\n
+      Widget lze umístit standartním způsobem na plochu.\n
+    - Aplikace sama hlídá platnost hesla vašich schránek a upozorní vás 20 dní před jeho expirací.\n 
     \n
     Funknce které jsou v plánu:\n
     1. Odesílání zpráv\n

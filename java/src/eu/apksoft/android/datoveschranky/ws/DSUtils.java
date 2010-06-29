@@ -21,6 +21,7 @@ package eu.apksoft.android.datoveschranky.ws;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -56,6 +57,14 @@ public class DSUtils {
     		return null;
     	}
     	return IsoDate.dateToString(date.getTime(), IsoDate.DATE_TIME);
+    }
+    
+    public static String toStringDate(Date date) {
+    	if (date == null) {
+    		return "";
+    	}else{
+    		return sdf.format(date.getTime());
+    	}
     }
     
     public static String toStringDate(GregorianCalendar date) {

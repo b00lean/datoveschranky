@@ -89,6 +89,8 @@ public class PreferencesHelper {
 				}else{
 					setProperty(context, "access." + i +".lastMessageId", "");
 				}
+				setProperty(context, "access." + i + ".passwordExpires", accesses.get(i).getPasswordExpires() + "");
+				setProperty(context, "access." + i + ".passwordExpirationLastChecked", accesses.get(i).getPasswordExpirationLastChecked() +"");
 			}
 		}
 		
@@ -104,7 +106,9 @@ public class PreferencesHelper {
 						getProperty(context, "access." + i + ".password", ""),
 						getProperty(context, "access." + i + ".boxId", ""),
 						getProperty(context, "access." + i + ".boxName", ""),
-						getProperty(context, "access." + i + ".lastMessageId", "")
+						getProperty(context, "access." + i + ".lastMessageId", ""),
+						Long.parseLong(getProperty(context, "access." + i + ".passwordExpires", "0")),
+						Long.parseLong(getProperty(context, "access." + i + ".passwordExpirationLastChecked", "0"))
 				));
 			}
 			return result;

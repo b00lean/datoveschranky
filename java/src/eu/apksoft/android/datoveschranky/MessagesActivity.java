@@ -39,6 +39,7 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import cz.abclinuxu.datoveschranky.common.entities.MessageEnvelope;
 import cz.abclinuxu.datoveschranky.common.entities.MessageState;
+import cz.abclinuxu.datoveschranky.common.interfaces.DataBoxAccessService;
 import cz.abclinuxu.datoveschranky.common.interfaces.DataBoxMessagesService;
 import eu.apksoft.android.datoveschranky.adapters.MessageEnvelopeAdapter;
 import eu.apksoft.android.datoveschranky.dto.DataBoxAccess;
@@ -101,14 +102,25 @@ public class MessagesActivity extends Activity implements OnClickListener, OnIte
 				List<DataBoxAccess> dataBoxAccesses = PreferencesHelper.getDataBoxAccesses(MessagesActivity.this);
 				DataBoxAccess dataBoxAccess = dataBoxAccesses.get(dataBoxAccessId);
 				DataBoxServicesImpl services = new DataBoxServicesImpl(DSUtils.SERVICE_URL, dataBoxAccess.getPersonId(), dataBoxAccess.getPassword());
-				
+
+				//for backward compatibility. If we don't have password expiration we need to download it and download messages afterwards.
+				if (dataBoxAccess.getPasswordExpires() == DataBoxAccess.UNKNOWN_TIME) {
+					DataBoxAccessService dataBoxAccessService = services.getDataBoxAccessService();
+					GregorianCalendar passwordInfo = dataBoxAccessService.GetPasswordInfo();
+					long passwordExpires = passwordInfo.getTimeInMillis();
+					dataBoxAccess.setPasswordExpires(passwordExpires);
+					dataBoxAccess.setPasswordExpirationLastChecked(System.currentTimeMillis());
+					PreferencesHelper.setDataBoxAccesses(dataBoxAccesses, MessagesActivity.this);
+				}
+
+				//download messages
 				DataBoxMessagesService dataBoxMessagesService = services.getDataBoxMessagesService();
 				
 			    try {
 				    GregorianCalendar from = new GregorianCalendar();
 				    GregorianCalendar to = new GregorianCalendar();
-				    from.roll(Calendar.DAY_OF_YEAR, -28);
-				    to.roll(Calendar.DAY_OF_YEAR, 1);
+				    from.add(Calendar.DAY_OF_YEAR, -200);
+				    to.add(Calendar.DAY_OF_YEAR, 1);
 				    EnumSet<MessageState> state = null;
 				    
 				    List<MessageEnvelope> envelopes = null;

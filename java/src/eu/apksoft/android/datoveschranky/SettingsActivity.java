@@ -19,6 +19,8 @@
  */
 package eu.apksoft.android.datoveschranky;
 
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import android.app.Activity;
@@ -148,25 +150,35 @@ public class SettingsActivity extends Activity implements OnClickListener, OnIte
 					    try {
 							OwnerInfo ownerInfoFromLogin = dataBoxAccessService.GetOwnerInfoFromLogin();
 							String boxId = ownerInfoFromLogin.getDataBoxID();
-							String boxName = ownerInfoFromLogin.getDataBoxType() + "  - " + ownerInfoFromLogin.getFirmName();
+							String boxName = ownerInfoFromLogin.getDataBoxType() + "";
+							if (ownerInfoFromLogin.getFirmName() != null) {
+								boxName += "  - " + ownerInfoFromLogin.getFirmName();
+							}else if (ownerInfoFromLogin.getPersonNameFirstName() != null && ownerInfoFromLogin.getPersonNameLastName() != null) {
+								boxName += "  - " + ownerInfoFromLogin.getPersonNameFirstName() + " " + ownerInfoFromLogin.getPersonNameLastName();
+							}
 							
 							
-						
-							int duration = Toast.LENGTH_SHORT;
+							
+							GregorianCalendar passwordInfo = dataBoxAccessService.GetPasswordInfo();
+							long passwordExpires = passwordInfo.getTimeInMillis();
+							 
 							if (currentDataBoxAccess == null) { 
 								//save new box
-								dataBoxAccesses.add(new DataBoxAccess(personId, password, boxId, boxName,null));
+								dataBoxAccesses.add(new DataBoxAccess(personId, password, boxId, boxName,null, passwordExpires, System.currentTimeMillis()));
 								PreferencesHelper.setDataBoxAccesses(dataBoxAccesses, SettingsActivity.this);
-								Toast.makeText(SettingsActivity.this, SettingsActivity.this.getResources().getText(R.string.new_databox_added), duration).show();
+								Toast.makeText(SettingsActivity.this, SettingsActivity.this.getResources().getString(R.string.new_databox_added), Toast.LENGTH_LONG).show();
+								Toast.makeText(SettingsActivity.this, SettingsActivity.this.getResources().getString(R.string.password_expires, DSUtils.toStringDate(new Date(passwordExpires))), Toast.LENGTH_LONG).show();
 							}else{
 								//save change
 								currentDataBoxAccess.setPersonId(personId);
 								currentDataBoxAccess.setPassword(password);
 								currentDataBoxAccess.setBoxName(boxName);
 								currentDataBoxAccess.setBoxId(boxId);
+								currentDataBoxAccess.setPasswordExpires(passwordExpires);
+								currentDataBoxAccess.setPasswordExpirationLastChecked(System.currentTimeMillis());
 								PreferencesHelper.setDataBoxAccesses(dataBoxAccesses, SettingsActivity.this);
-								Toast.makeText(SettingsActivity.this, SettingsActivity.this.getResources().getText(R.string.databox_saved), duration).show();
-								
+								Toast.makeText(SettingsActivity.this, SettingsActivity.this.getResources().getText(R.string.databox_saved), Toast.LENGTH_LONG).show();
+								Toast.makeText(SettingsActivity.this, SettingsActivity.this.getResources().getString(R.string.password_expires, DSUtils.toStringDate(new Date(passwordExpires))), Toast.LENGTH_LONG).show();
 							}
 							//2. refresh list
 							databoxesAdapter.notifyDataSetChanged();

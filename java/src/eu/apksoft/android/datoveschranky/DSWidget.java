@@ -82,11 +82,14 @@ public class DSWidget extends AppWidgetProvider {
             	updateViews.setImageViewResource(R.id.imgLabel, R.drawable.widget_new);
             }
             
+            
+            AndroidUtils.checkPasswordExpirations(this);
+            
             // When user clicks on widget, launch Login page
             Intent defineIntent = new Intent(this, LoginActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(context,0, defineIntent, 0 );
             updateViews.setOnClickPendingIntent(R.id.txtLabel, pendingIntent);
-                
+           
             return updateViews;
         }
         
@@ -104,8 +107,8 @@ public class DSWidget extends AppWidgetProvider {
 					
 					GregorianCalendar from = new GregorianCalendar();
 					GregorianCalendar to = new GregorianCalendar();
-					from.roll(Calendar.DAY_OF_YEAR, -28);
-					to.roll(Calendar.DAY_OF_YEAR, 1);
+					from.add(Calendar.DAY_OF_YEAR, -200);
+					to.add(Calendar.DAY_OF_YEAR, 1);
 					EnumSet<MessageState> state = null;
 					
 					List<MessageEnvelope> messages = dataBoxMessagesService.getListOfReceivedMessages(from, to, state, 0, 100);

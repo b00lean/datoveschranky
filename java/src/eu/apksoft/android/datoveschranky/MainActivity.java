@@ -62,13 +62,13 @@ public class MainActivity extends Activity implements OnClickListener, OnItemCli
 		
 		lv.setAdapter(databoxesAdapter);
 		lv.setOnItemClickListener(this);
-
     }
     
 
 	@Override
 	protected void onResume() {
 		super.onResume();
+		AndroidUtils.checkPasswordExpirations(this);
         List<DataBoxAccess> dataBoxAccesses = PreferencesHelper.getDataBoxAccesses(this);
         if (dataBoxAccesses.size() == 0) {
         	databoxesAdapter.setShowIsEmpty(true);

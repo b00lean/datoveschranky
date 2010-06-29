@@ -19,6 +19,7 @@
  */
 package eu.apksoft.android.datoveschranky.adapters;
 
+import java.util.Date;
 import java.util.List;
 
 import android.app.Activity;
@@ -29,6 +30,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import eu.apksoft.android.datoveschranky.R;
 import eu.apksoft.android.datoveschranky.dto.DataBoxAccess;
+import eu.apksoft.android.datoveschranky.ws.DSUtils;
 
 public class DataBoxAccessAdapter extends BaseAdapter {
 	private Activity activity;
@@ -149,10 +151,10 @@ public class DataBoxAccessAdapter extends BaseAdapter {
 				}
 			}
 				
-				
+			((TextView)result.findViewById(R.id.txtBoxName)).setText(databoxes.get(position).getBoxName());
 			((TextView)result.findViewById(R.id.txtPersonID)).setText(databoxes.get(position).getPersonId());
 			((TextView)result.findViewById(R.id.txtBoxID)).setText(databoxes.get(position).getBoxId());
-			((TextView)result.findViewById(R.id.txtBoxName)).setText(databoxes.get(position).getBoxName());
+			((TextView)result.findViewById(R.id.txtPasswordExpires)).setText(databoxes.get(position).getPasswordExpires() == 0 ? "" : DSUtils.toStringDate(new Date(databoxes.get(position).getPasswordExpires())));
 		}
 		return result;
 	}

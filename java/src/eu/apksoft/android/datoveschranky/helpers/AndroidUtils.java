@@ -27,6 +27,9 @@ import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
@@ -36,15 +39,22 @@ import javax.net.ssl.TrustManager;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources.NotFoundException;
 
 import com.nullwire.trace.ExceptionHandler;
 
 import cz.abclinuxu.datoveschranky.common.entities.LegalTitle;
 import cz.abclinuxu.datoveschranky.common.entities.MessageEnvelope;
+import eu.apksoft.android.datoveschranky.LoginActivity;
 import eu.apksoft.android.datoveschranky.R;
+import eu.apksoft.android.datoveschranky.dto.DataBoxAccess;
+import eu.apksoft.android.datoveschranky.ws.DSUtils;
 import eu.apksoft.android.datoveschranky.ws.MyAndroidTrustManager;
 import eu.apksoft.android.datoveschranky.ws.ServiceException;
 
@@ -55,6 +65,29 @@ public class AndroidUtils {
 	public static void registerForExceptions(Context context) {
 		ExceptionHandler.register(context, "http://www.apksoft.eu/android/exception.jsp");
 	}
+	
+	public static void checkPasswordExpirations(Context context) {
+		List<DataBoxAccess> dataBoxAccesses = PreferencesHelper.getDataBoxAccesses(context);
+		int i=0;
+		for (DataBoxAccess dataBoxAccess : dataBoxAccesses) {
+			if (dataBoxAccess.getPasswordExpirationLastChecked() != 0 && dataBoxAccess.getPasswordExpires() != 0) {
+				Date expires = new Date(dataBoxAccess.getPasswordExpires());
+				
+				Calendar cal = Calendar.getInstance();
+				cal.add(Calendar.DAY_OF_YEAR, 20);
+				if (cal.getTime().after(expires)) { //if today+20days is after expiration date
+					String boxName = dataBoxAccess.getBoxName();
+					NotificationManager nManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+					Notification notification = new Notification(R.drawable.icon, context.getResources().getString(R.string.password_expires_soon), System.currentTimeMillis());
+					PendingIntent contentIntent = PendingIntent.getActivity(context, 0, new Intent(context, LoginActivity.class), 0);
+					notification.setLatestEventInfo(context, context.getResources().getString(R.string.password_expires_soon), DSUtils.toStringDate(expires) + " - " + boxName, contentIntent);
+					nManager.notify(++i, notification);
+				}
+
+			}
+		}
+	}
+
 	
 	public static void initSSLIfNeeded(Context context) {
 		if (!sslInited) {
