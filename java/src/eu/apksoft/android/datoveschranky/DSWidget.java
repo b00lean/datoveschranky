@@ -68,6 +68,7 @@ public class DSWidget extends AppWidgetProvider {
             ComponentName thisWidget = new ComponentName(this, DSWidget.class);
             AppWidgetManager manager = AppWidgetManager.getInstance(this);
             manager.updateAppWidget(thisWidget, updateViews);
+            stopSelf();
         }
 
         public RemoteViews buildUpdate(Context context) {

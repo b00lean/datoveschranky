@@ -20,6 +20,8 @@
 package eu.apksoft.android.datoveschranky.services;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 import org.ksoap2.SoapEnvelope;
@@ -125,7 +127,13 @@ public class DataBoxAccessServiceImpl implements DataBoxAccessService {
 	    try {
 			transport.call(SOAP_ACTION, envelope);
 			SoapPrimitive response = ((SoapPrimitive)envelope.getResponse());
-			return DSUtils.toGregorianCalendar(response.toString());
+			if (response == null) {
+				GregorianCalendar gregorianCalendar = new GregorianCalendar();
+				gregorianCalendar.setTime(new Date(2100,1,1));
+				return gregorianCalendar;
+			}else{
+				return DSUtils.toGregorianCalendar(response.toString());
+			}
 		} catch (SoapFault e) {
 			e.printStackTrace();
 			throw new ServiceException(e);
