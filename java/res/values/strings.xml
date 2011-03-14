@@ -42,7 +42,7 @@
     <string name="password_expires">Platnost hesla datové schránky vyprší: %s</string>
     <string name="password_expires2">Platnost hesla do:</string>
     <string name="password_expires_soon">Platnost hesla brzy vyprší</string>
-    <string name="password_expires3">Platnost hesla datové schránky %s vyprší: %s. Přihlašte se na stránky http://www.mojedatovaschranka.cz/ pro jeho změnu.</string>
+    <string name="password_expires3">Platnost hesla datové schránky %1$s vyprší: %2$s. Přihlašte se na stránky http://www.mojedatovaschranka.cz/ pro jeho změnu.</string>
     
     <string name="new_databox_added">Nová datová schránka byla přidána.</string>
     <string name="databox_saved">Změněné přihlašovací údaje datové schránky byly uloženy.</string>
@@ -94,8 +94,8 @@
     <string name="choose_action">Vyberte akci</string>
     <string name="saving_attachement">Ukládám přílohu</string>
     <string name="could_not_save_attachement">Přílohu se nepodařilo uložit</string>
-    <string name="attachment_has_been_saved_to">Příloha %s byla uložena do %s.</string>
-    <string name="could_not_openattachment">Přílohu %s typu %s se nepodařilo otevřít. Pravděpodobně vám chybí aplikace na prohlížení tohoto typu souboru.</string>
+    <string name="attachment_has_been_saved_to">Příloha %1$s byla uložena do %2$s.</string>
+    <string name="could_not_openattachment">Přílohu %1$s typu %2$s se nepodařilo otevřít. Pravděpodobně vám chybí aplikace na prohlížení tohoto typu souboru.</string>
     <string name="please_wait">Prosím čekejte...</string>
     <string name="help_text">
     Aplikace Datové schránky pro Android není dokonalá.\n
